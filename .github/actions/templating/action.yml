@@ -1,0 +1,13 @@
+name: Replace template variables
+description: Replace template variables in repo
+runs:
+  using: composite
+  steps:
+    - run: |
+        echo "Replacing $TEMPLATE with $SUBSTITUTION"
+        find . -type f -not -path './\.*' -exec sed -i "s/$TEMPLATE/$SUBSTITUTION/g" {} +
+        rm -f .github/workflows/init.yml
+      shell: bash
+      env:
+        TEMPLATE: project-template
+        SUBSTITUTION: ${{ github.event.repository.name }}

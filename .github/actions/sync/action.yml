@@ -1,0 +1,16 @@
+name: Sync template repo
+description: Sync changes in template repo to this repo
+inputs:
+  steps:
+    description: "Comma separated list of steps to run"
+    required: true
+runs:
+  using: composite
+  steps:
+    # https://github.com/marketplace/actions/actions-template-sync
+    - uses: AndreasAugustin/actions-template-sync@v2
+      with:
+        source_repo_path: ${{ github.repository_owner }}/project-template
+        upstream_branch: master
+        git_user_name: github-actions[bot]
+        steps: ${{ inputs.steps }}

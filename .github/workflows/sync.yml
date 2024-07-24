@@ -1,0 +1,25 @@
+name: Template sync
+on:
+  schedule:
+    - cron: "0 0 * * 0" # every Sunday at midnight
+  workflow_dispatch:
+jobs:
+  sync:
+    if: github.event.repository.name != 'project-template'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Pull from template repository
+        uses: ./.github/actions/sync
+        with:
+          steps: "prechecks,pull"
+      - name: Replace template variables
+        uses: ./.github/actions/templating
+      - name: Create pull request
+        uses: ./.github/actions/sync
+        with:
+          steps: "commit,push,pr"
