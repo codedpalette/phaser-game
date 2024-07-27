@@ -33,6 +33,8 @@ function preload(this: Phaser.Scene) {
 }
 
 let player: Types.Physics.Arcade.SpriteWithDynamicBody
+let score = 0
+let scoreText: Phaser.GameObjects.Text
 
 function create(this: Phaser.Scene) {
   const { width, height } = this.game.config
@@ -46,9 +48,22 @@ function create(this: Phaser.Scene) {
   platforms.create(50, 250, "ground")
   platforms.create(750, 220, "ground")
 
-  player = this.physics.add.sprite(100, 450, "dude")
-  player.setBounce(0.2)
-  player.setCollideWorldBounds(true)
+  const stars = this.physics.add.group({
+    key: "star",
+    repeat: 11,
+    setXY: { x: 12, y: 0, stepX: 70 },
+  })
+  stars.children.iterate((child) => {
+    ;(child as Phaser.Physics.Arcade.Sprite).setBounceY(Phaser.Math.FloatBetween(0.4, 0.8))
+    return true
+  })
+
+  player = this.physics.add.sprite(100, 450, "dude").setBounce(0.2).setCollideWorldBounds(true)
+  player.body.setGravityY(200)
+
+  this.physics.add.collider(player, platforms)
+  this.physics.add.collider(stars, platforms)
+  this.physics.add.overlap(player, stars, collectStar as Types.Physics.Arcade.ArcadePhysicsCallback, undefined, this)
 
   this.anims.create({
     key: "left",
@@ -70,8 +85,17 @@ function create(this: Phaser.Scene) {
     repeat: -1,
   })
 
-  player.body.setGravityY(300)
-  this.physics.add.collider(player, platforms)
+  scoreText = this.add.text(16, 16, "Score: 0", { fontSize: "32px", color: "#000" })
+}
+
+function collectStar(
+  _player: Types.Physics.Arcade.SpriteWithDynamicBody,
+  star: Types.Physics.Arcade.SpriteWithDynamicBody,
+) {
+  star.disableBody(true, true)
+
+  score += 10
+  scoreText.setText("Score: " + score)
 }
 
 function update(this: Phaser.Scene) {
@@ -91,6 +115,6 @@ function update(this: Phaser.Scene) {
   }
 
   if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-330)
+    player.setVelocityY(-500)
   }
 }
