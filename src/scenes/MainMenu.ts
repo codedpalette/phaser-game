@@ -1,32 +1,32 @@
-import { GameObjects, Scene } from "phaser"
+import { Scene } from "phaser"
 
 export class MainMenu extends Scene {
-  background?: GameObjects.Image
-  logo?: GameObjects.Image
-  title?: GameObjects.Text
-
+  private readonly menuStrokeColor = "#000000"
+  private readonly menuStrokeThickness = 3
+  private readonly menuStrokeThicknessActive = 8
   constructor() {
     super("MainMenu")
   }
 
   create() {
-    this.background = this.add.image(512, 384, "background")
-
-    this.logo = this.add.image(512, 300, "logo")
-
-    this.title = this.add
-      .text(512, 460, "Main Menu", {
+    const centerX = +this.game.config.width / 2
+    const centerY = +this.game.config.height / 2
+    this.add.image(centerX, centerY, "background")
+    this.add.image(centerX, 240, "logo")
+    const text = this.add
+      .text(centerX, 360, "Start", {
         fontFamily: "Arial Black",
         fontSize: 38,
         color: "#ffffff",
-        stroke: "#000000",
-        strokeThickness: 8,
+        stroke: this.menuStrokeColor,
+        strokeThickness: this.menuStrokeThickness,
         align: "center",
       })
       .setOrigin(0.5)
-
-    this.input.once("pointerdown", () => {
-      this.scene.start("Game")
-    })
+      .setInteractive()
+    text
+      .on("pointerover", () => text.setStroke(this.menuStrokeColor, this.menuStrokeThicknessActive))
+      .on("pointerout", () => text.setStroke(this.menuStrokeColor, this.menuStrokeThickness))
+      .on("pointerdown", () => this.scene.start("Game"))
   }
 }
