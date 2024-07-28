@@ -50,7 +50,7 @@ export default configHelper(
           vars: "all",
           varsIgnorePattern: "^_",
           args: "after-used",
-          argsIgnorePattern: "^_|this",
+          argsIgnorePattern: "^_",
         },
       ],
 

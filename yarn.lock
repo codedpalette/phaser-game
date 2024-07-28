@@ -3481,44 +3481,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"phaser-game@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "phaser-game@workspace:."
-  dependencies:
-    "@eslint/compat": "npm:^1.1.1"
-    "@eslint/eslintrc": "npm:^3.1.0"
-    "@eslint/js": "npm:^9.7.0"
-    "@types/eslint__js": "npm:^8.42.3"
-    "@typescript-eslint/parser": "npm:^7.16.0"
-    eslint: "npm:^9.7.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-import-resolver-typescript: "npm:^3.6.1"
-    eslint-plugin-compat: "npm:^5.0.0"
-    eslint-plugin-import: "npm:^2.29.1"
-    eslint-plugin-simple-import-sort: "npm:^12.1.1"
-    eslint-plugin-unused-imports: "npm:^4.0.0"
-    husky: "npm:^9.0.11"
-    lint-staged: "npm:^15.2.7"
-    phaser: "npm:^3.80.1"
-    prettier: "npm:^3.3.3"
-    stylelint: "npm:^16.7.0"
-    stylelint-config-standard: "npm:^36.0.1"
-    stylelint-no-unsupported-browser-features: "npm:^8.0.1"
-    typescript: "npm:^5.5.3"
-    typescript-eslint: "npm:^7.16.0"
-    vite: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"phaser@npm:^3.80.1":
-  version: 3.80.1
-  resolution: "phaser@npm:3.80.1"
-  dependencies:
-    eventemitter3: "npm:^5.0.1"
-  checksum: 10c0/431f5964c9ddc08f705b871d867617afba4f1dc162a09cac0a2907a9cd74a1b656ebf788615528a6d2188eaeac561789a630f2134c5f2d8521a874a391656580
-  languageName: node
-  linkType: hard
-
 "picocolors@npm:^1.0.0, picocolors@npm:^1.0.1":
   version: 1.0.1
   resolution: "picocolors@npm:1.0.1"
@@ -3622,6 +3584,34 @@ __metadata:
   checksum: 10c0/17db4757c2a5c44c1e545170e6c70a26f7de58feb985091fb1763f5081cab3d01b181fb2dd240c9f4a4255a1d9227d163d5771b7e69c9e49a561692db865efb9
   languageName: node
   linkType: hard
+
+"phaser-game@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "phaser-game@workspace:."
+  dependencies:
+    "@eslint/compat": "npm:^1.1.1"
+    "@eslint/eslintrc": "npm:^3.1.0"
+    "@eslint/js": "npm:^9.7.0"
+    "@types/eslint__js": "npm:^8.42.3"
+    "@typescript-eslint/parser": "npm:^7.16.0"
+    eslint: "npm:^9.7.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    eslint-import-resolver-typescript: "npm:^3.6.1"
+    eslint-plugin-compat: "npm:^5.0.0"
+    eslint-plugin-import: "npm:^2.29.1"
+    eslint-plugin-simple-import-sort: "npm:^12.1.1"
+    eslint-plugin-unused-imports: "npm:^4.0.0"
+    husky: "npm:^9.0.11"
+    lint-staged: "npm:^15.2.7"
+    prettier: "npm:^3.3.3"
+    stylelint: "npm:^16.7.0"
+    stylelint-config-standard: "npm:^36.0.1"
+    stylelint-no-unsupported-browser-features: "npm:^8.0.1"
+    typescript: "npm:^5.5.3"
+    typescript-eslint: "npm:^7.16.0"
+    vite: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
 
 "promise-retry@npm:^2.0.1":
   version: 2.0.1
